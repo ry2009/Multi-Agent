@@ -1,54 +1,67 @@
-# Multi-Agent LLM Research
+# Multiagent Finetuning: Self Improvement with Diverse Reasoning Chains
 
-This repository contains research code exploring improvements to multi-agent language model systems, inspired by and building upon the work in ["Multiagent Finetuning of Language Models"](https://llm-multiagent-ft.github.io/).
-
-## Key Improvements
-
-- **Enhanced Specialization**: Implementation of dynamic agent specialization based on performance tracking
-- **Sophisticated Critic System**: Weighted voting mechanism with specialized critic models
-- **Diversity Measurement**: Semantic diversity scoring using sentence embeddings
-- **Adaptive Learning**: Agents and critics that adapt their behavior based on historical performance
-
-## Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/ry2009/Multi-Agent.git
-cd Multi-Agent
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-## Usage
-
-Run the main experiment:
-
-```bash
-python main.py
-```
-
-The system will:
-1. Initialize multiple agents with different temperature settings
-2. Create specialized critic models
-3. Run debates on various question types
-4. Track performance and adapt specializations
-5. Output results including diversity scores and confidence levels
+A multi-agent system for improving language model performance through diverse reasoning and specialization.
 
 ## Project Structure
 
-- `main.py`: Core implementation of the multi-agent system
-- `requirements.txt`: Project dependencies
-- `.gitignore`: Git ignore rules
+```
+.
+├── main.py              # Core multi-agent system implementation
+├── experiments.py       # Experiment runner and analysis
+├── prompts/            
+│   └── few_shot_examples.py  # Few-shot examples for different question types
+├── results/             # Experiment results directory
+└── requirements.txt     # Project dependencies
+```
 
-## Research Goals
+## Setup
 
-This project aims to explore and potentially improve upon the specialization heuristic described in the original paper, specifically:
+1. Create a Python environment:
+```bash
+conda create -n multiagent python=3.11
+conda activate multiagent
+```
 
-1. Testing if the specialization approach generalizes well across domains
-2. Exploring the balance between maintaining diversity and ensuring convergence
-3. Investigating scalability across different types of tasks
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-## Contributing
+## Running Experiments
 
-Feel free to open issues or submit pull requests with improvements or experiments. 
+Run the main experiment suite:
+```bash
+python experiments.py
+```
+
+## Current Status
+
+The system implements:
+- Multi-agent debate with 3 agents and 2 critics
+- 5 question types: arithmetic, factual, logical, word problems, and open-ended
+- Diversity metrics: semantic, lexical, and clustering
+- Specialization mechanism with performance tracking
+- Response validation and quality filtering
+
+Current challenges:
+1. Low accuracy across question types (0% currently)
+2. Limited specialization development
+3. Response quality needs improvement
+4. Model generation parameters need tuning
+
+## Next Steps
+
+1. Improve response generation:
+   - Better prompt engineering
+   - Fine-tune temperature and sampling parameters
+   - Enhance response validation
+
+2. Enhance specialization:
+   - Adjust learning rates
+   - Improve reinforcement mechanism
+   - Better performance tracking
+
+3. System improvements:
+   - More sophisticated critic evaluation
+   - Enhanced debate mechanism
+   - Better result logging and analysis 

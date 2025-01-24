@@ -1,0 +1,362 @@
+{
+  "arithmetic": [
+    {
+      "question": "What is 15 + 28?",
+      "type": "arithmetic",
+      "correct_answer": "43",
+      "final_answer": "15",
+      "diversity": {
+        "semantic": 0.5380650758743286,
+        "lexical": 1.0,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "15"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "20"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "1923"
+        }
+      ]
+    },
+    {
+      "question": "Calculate 125 divided by 5",
+      "type": "arithmetic",
+      "correct_answer": "25",
+      "final_answer": "9",
+      "diversity": {
+        "semantic": 0.5047293901443481,
+        "lexical": 1.0,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "9"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "01"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "3"
+        }
+      ]
+    },
+    {
+      "question": "What is the square root of 144?",
+      "type": "arithmetic",
+      "correct_answer": "12",
+      "final_answer": "101",
+      "diversity": {
+        "semantic": 0.47745293378829956,
+        "lexical": 1.0,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "101"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "12"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "30"
+        }
+      ]
+    },
+    {
+      "question": "What is 30% of 200?",
+      "type": "arithmetic",
+      "correct_answer": "60",
+      "final_answer": "10",
+      "diversity": {
+        "semantic": 0.5717595815658569,
+        "lexical": 1.0,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "10"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "3"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "1995"
+        }
+      ]
+    }
+  ],
+  "factual": [
+    {
+      "question": "What is the capital of Japan?",
+      "type": "factual",
+      "correct_answer": "Tokyo",
+      "final_answer": "______________________________ (The most common way to get an idea about a given situation or problem",
+      "diversity": {
+        "semantic": 0.8634191155433655,
+        "lexical": 0.9546300533943555,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "______________________________ (The most common way to get an idea about a given situation or problem"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "--------------- (you will have to see our full post at\u00a0 http://www-postscript"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "~~~ Yes I know you're going to be in a hurry at times because it will probably take years or even decades for me just reading those comments out loud won't allow that information- as my friends had said before ! As such please try hard NOT TO COMMENT SO SORRY!! If possible do not comment too much if there's no context! Even when commenting after things have passed so long already with all new people may get mad :) Try looking over something from several pages past about \"The Empire Strikes Back\""
+        }
+      ]
+    },
+    {
+      "question": "Who wrote Romeo and Juliet?",
+      "type": "factual",
+      "correct_answer": "William Shakespeare",
+      "final_answer": "____________________________ (This will be explained below",
+      "diversity": {
+        "semantic": 0.6227610111236572,
+        "lexical": 1.0,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "____________________________ (This will be explained below"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "____________________________________________________________________________________"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "__________|_____; (The \"question\", for instance"
+        }
+      ]
+    },
+    {
+      "question": "What is the chemical symbol for gold?",
+      "type": "factual",
+      "correct_answer": "Au",
+      "final_answer": "__________________________________________________________________________ If you don't know a lot about chemistry or physics then just try to figure out how it works without actually looking at any books! In fact I'm going back in time on that subject so now let's talk with \"the art of logic\"",
+      "diversity": {
+        "semantic": 0.7760345339775085,
+        "lexical": 0.923386668366588,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "__________________________________________________________________________ If you don't know a lot about chemistry or physics then just try to figure out how it works without actually looking at any books! In fact I'm going back in time on that subject so now let's talk with \"the art of logic\""
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "_____ (You can use any number to choose which type of information you want"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "In every case we use one word to describe all possible meanings or ways that a number could be described within 100 lines long (or over an inch from top of our heads), including letters with large gaps in them like A , B = 5th Letter X"
+        }
+      ]
+    },
+    {
+      "question": "Which planet is closest to the Sun?",
+      "type": "factual",
+      "correct_answer": "Mercury",
+      "final_answer": "____________________________________________________________________________ (A short summary will help you with these three steps",
+      "diversity": {
+        "semantic": 0.7967362999916077,
+        "lexical": 0.9297920727745289,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "____________________________________________________________________________ (A short summary will help you with these three steps"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "**********Please note that these examples do not represent all possible scenarios for a given situation or scenario in which you have chosen an appropriate response from us (or any other person who has provided such information)"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "************** If you read about an obvious mathematical paradox before deciding on a solution then perhaps reading these links will make better use in our work : wwwsolutions-to - Mathematics for Science & Reasoning / \"QS Mathematical Parallels\", my course which teaches critical thinking (a part I attended)"
+        }
+      ]
+    }
+  ],
+  "logical": [
+    {
+      "question": "If all birds can fly, and penguins are birds, can penguins fly?",
+      "type": "logical",
+      "correct_answer": "No, because while penguins are birds, not all birds can fly. This is a false premise.",
+      "final_answer": "~~~If you have an idea of how much more likely they would make sense than someone who does NOT believe in evolution or science but just wants to get away from things like climate change etc., then I think one way around these problems might well be \"You're right.\" You may find yourself thinking about something else besides biology if only because so many people do seem to agree on such issues as whether humans evolved during human history; why did our ancestors evolve when no evidence exists supporting them?, which species were most closely related between us before Homo sapiens arrived?\", where will those similarities end up coming out again ? That said , don`t expect me here to go into every single issue raised above ;-) But let\u00b4s start off strongly : The question isn\ufffd t really any different now since everything has been settled . So far everyone seems pretty confident enough regarding evolutionary theory without having had too bad experience dealing directly WITH THE QUESTION OF WHY SOMEONE DOESN'T BELIEVE IN A GEN",
+      "diversity": {
+        "semantic": 0.8102356791496277,
+        "lexical": 0.8097945452634031,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "~~~If you have an idea of how much more likely they would make sense than someone who does NOT believe in evolution or science but just wants to get away from things like climate change etc., then I think one way around these problems might well be \"You're right.\" You may find yourself thinking about something else besides biology if only because so many people do seem to agree on such issues as whether humans evolved during human history; why did our ancestors evolve when no evidence exists supporting them?, which species were most closely related between us before Homo sapiens arrived?\", where will those similarities end up coming out again ? That said , don`t expect me here to go into every single issue raised above ;-) But let\u00b4s start off strongly : The question isn\ufffd t really any different now since everything has been settled . So far everyone seems pretty confident enough regarding evolutionary theory without having had too bad experience dealing directly WITH THE QUESTION OF WHY SOMEONE DOESN'T BELIEVE IN A GEN"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "--------------------------If you have an animal or bird of prey in mind then follow these steps as outlined above - if they don\u00b4t respond immediately after asking about something else than \"What should I do?\", ask them first! The more time spent on each question formulating its response will allow us better understanding how things work together when dealing directly from within our own minds; so please feel free take my word here :-)"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "---------------This point has been taken as an analogy in many different contexts so I will focus only on its simplicity here!\u00a0 See our book \"Diet Your Heart With The One Best Way To Go Fish You Know.\" This helps us create practical solutions if needs require them both--and don%e get stressed off of those strategies too much or miss out just short. Remember however - when trying these principles from above without first understanding my own advice over thousands rather than millions they lead me astray... but you do whatever works best until YOU GET THERE!! Also notice how each factor matters!!! Think ahead; no more stressing yourself every day while ignoring any negative outcomes after . It doesnt make sense yet though ;)) So simply remember today isn\\'t meant now since even then things won\\'at continue throughout life.. However keep In mind -- once everything comes into line around tomorrow ..you may have missed something great ,but hopefully someday 's solution wont need anything extra nor take away people coming back looking beyond ..."
+        }
+      ]
+    },
+    {
+      "question": "If it's raining, the ground is wet. The ground is wet. Does this mean it's raining?",
+      "type": "logical",
+      "correct_answer": "No, because there could be other reasons why the ground is wet.",
+      "final_answer": "__________\u200d= You will have an easy understanding of how you're approaching these two questionnaires if they were written in English or Spanish using only one language on each page!",
+      "diversity": {
+        "semantic": 0.8369954228401184,
+        "lexical": 0.9360189394494712,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "__________\u200d= You will have an easy understanding of how you're approaching these two questionnaires if they were written in English or Spanish using only one language on each page!"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "_______________________________________________________________________________ | Answer of Question #4 - What Is A Wet Ground And Why Do You Think It Matters So Much To Me In This Life ?|"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "_______ Is you aware of any situations in which an animal responds based on its ability or sensitivity? For animals such as elephants who thrive when exposed into shallow water from above where they're swimming about 90 meters per second should respond very differently depending upon how deep below them submerge within themselves; also note many times whether underwater environments include artificial reefs because these conditions may affect natural predator response potentials but still allow predators sufficient access out here if necessary.* *This post only touches crucially briefly one part during our exploration phase so I'll add more later*"
+        }
+      ]
+    }
+  ],
+  "word_problem": [
+    {
+      "question": "If a store sells apples for $0.50 each and oranges for $0.75 each, how much would 4 apples and 3 oranges cost?",
+      "type": "word_problem",
+      "correct_answer": "4.25",
+      "final_answer": "__________ (If you have any question or comments please feel free to post them in the comment section below.)",
+      "diversity": {
+        "semantic": 0.8752129077911377,
+        "lexical": 0.819245765420262,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "__________ (If you have any question or comments please feel free to post them in the comment section below.)"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "__________ (If you have any question or need help with the above steps please feel free to contact me via email.)"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "__________ - Answer the question in full or not be confused about that part of Question #4 (the order): \"How to calculate price\" / The Price Range Example A 10-inch apple costs 99 cents as longs but an 8 inch fruit has 5 times its value when divided into two equal portions ($10). An item with half those values will have just over twice its size; so you might want more than one product on hand because there's no way they're interchangeable.\" http://www[youtube]http/watch?\"c=9BxHpD5ZJgA&featureid=view%20video#tq\\u003dThe fact is most stores sell both products simultaneously instead! I'm sure many people who buy from me find myself thinking these things aren't possible since every day we can see different prices charged per ounce which means only small quantities may ever fit together properly enough without causing problems like broken windows etc...But sometimes customers ask where my money"
+        }
+      ]
+    },
+    {
+      "question": "A train travels at 80 mph. How far will it travel in 2.5 hours?",
+      "type": "word_problem",
+      "correct_answer": "200 miles",
+      "final_answer": "__________ (If you have any question or need help with the above steps please feel free to contact me via email).",
+      "diversity": {
+        "semantic": 0.7884578108787537,
+        "lexical": 0.8810392506044681,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "__________ (If you have any question or need help with the above steps please feel free to contact me via email)."
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "__________ (or more accurately the question you want to ask): What's going on here ? Answer : The speed of light has been measured as 0 m/s\u00b2 . This means that there must be an average distance between two points within 10 km from one point where they intersect or cross together with another line connecting them; however these distances cannot exceed 100 meters per second ! Therefore we can assume no other factors exist besides time! So let us consider our solution using simple equations which show why such speeds may not always work out well when compared against real world conditions... In order make sure all possible solutions have already occurred before proceeding further into detail about any given situation - see below.... Example 4-4 shows three different ways around solving problems like \"How fast would I need to get home?\" Question 5: Is my bus traveling faster than its normal route(i.) When did i start travelling slower then?? Here again , please note only those situations involving moving cars / trains ;-) Note also whether certain"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "~~~ ~ The first question has to be answered before the second one can even begin. This means that you need an understanding of both sides (or \"the\" side). You also have two options when answering these three words simultaneously - either ask yourself whether or not there's any difference between them as they're phrased correctly (\"I think so\"), then try again with another person who doesn't know anything about those things but knows something else which may help explain why I'm asking such simple yes/no responses on multiple occasions; alternatively use someone like me whose knowledge isn' limited only because he hasn`t done his homework yet! ) Also note here all four statements must match up well enough...if we don\ufffdre talking over 100% accuracy (= 99%), our guess would probably look pretty good!! So let's start off using my own method from above where i say no-one needs more than 5 minutes per sentence after every response plus 10 seconds later add additional time until everyone gets back into"
+        }
+      ]
+    }
+  ],
+  "open_ended": [
+    {
+      "question": "What are the potential implications of artificial intelligence on society?",
+      "type": "open_ended",
+      "correct_answer": null,
+      "final_answer": "_____________________________________________________________________________ The first question should be simple enough that you can follow it up quickly without any further explanation or discussion (or even an understanding). It's important to note here how much information we need before answering these two basic queries \u2013 so don't worry if there isn'nt anything else out there! You'll get more from them later when they're done explaining things like \"What do I know about AI?\" etc\u2026",
+      "diversity": {
+        "semantic": 0.6575425863265991,
+        "lexical": 0.9343434343434343,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "_____________________________________________________________________________ The first question should be simple enough that you can follow it up quickly without any further explanation or discussion (or even an understanding). It's important to note here how much information we need before answering these two basic queries \u2013 so don't worry if there isn'nt anything else out there! You'll get more from them later when they're done explaining things like \"What do I know about AI?\" etc\u2026"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "_____________________________________________________________________________ The first question will be answered as follows (in order): \"What do you think about AI?\" Answer : Artificial Intelligence can help us better manage our lives more effectively than humans have ever done before - it's not just that we're smarter but also how much time has passed since then! We've been able use these tools because they were designed from scratch so there was no need or cost associated; however if people don't know where things go wrong when using them correctly...then why would anyone want an intelligent system like ours?? If I had my way....I'd probably never even consider making any money out here.\" Question #4 \u2013 Why should companies invest into research projects which may lead directly towards creating new technologies ? Answers To These Questions Are Not Required For Research Projects In A Business Case Example . As mentioned above, many businesses rely heavily upon data analytics such at large scale business models based on customer feedbacks regarding product quality , performance etc.. However due diligence needs to take place prior"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "_______________________________________________________________________________"
+        }
+      ]
+    },
+    {
+      "question": "How might climate change affect global agriculture in the next 50 years?",
+      "type": "open_ended",
+      "correct_answer": null,
+      "final_answer": "_______________________________________________________________________________",
+      "diversity": {
+        "semantic": 0.8628020286560059,
+        "lexical": 0.9533678756476683,
+        "cluster": 0.9182958337659504
+      },
+      "responses": [
+        {
+          "agent_id": "Agent_0",
+          "response": "_______________________________________________________________________________"
+        },
+        {
+          "agent_id": "Agent_1",
+          "response": "This question will help you identify how important it would be that we address these issues as quickly or efficiently possible (e., if there's no immediate need). The more time people spend on answering such an obvious but difficult problem,the better they'll get at solving them later!"
+        },
+        {
+          "agent_id": "Agent_2",
+          "response": "This question will help you build an understanding that can be used as part or even in conjunction (e., \"What do I need?\"). It also helps us better evaluate our responses based on context rather than simply looking at one's own experience . The more we know about how technologies impact human health ,the less likely it would be to make any changes if they were not already happening! In other words : If there was no way around them then why did things happen so quickly ? And since most people don't have access enough information yet - which means many problems exist ! So let me explain my point here first using simple language from Wikipedia article #5(4): Climate Change has been shown to cause significant increases in crop yields over time due primarily because plants produce fewer nutrients per unit area compared w/o CO\u2083 increase during periods when temperatures rise above freezing levels; therefore increasing food production requires increased inputs such plant biomass ; thus reducing greenhouse gas emission rates resulting directly into economic growth & employment"
+        }
+      ]
+    }
+  ]
+}

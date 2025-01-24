@@ -5,11 +5,17 @@ import json
 import random
 from question_types import get_question_type, QUESTION_TYPES
 from diversity_metrics import DiversityMetrics
+from prompts.few_shot_examples import get_few_shot_prompt
+from response_validator import ResponseValidator
+import numpy as np
 
 # Load GPT-2
 model_name = "gpt2"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
+# Set padding token to be the same as EOS token
+tokenizer.pad_token = tokenizer.eos_token
 model = AutoModelForCausalLM.from_pretrained(model_name)
+model.config.pad_token_id = model.config.eos_token_id
 
 class Agent:
     def __init__(self, id, temperature=1.0):
@@ -17,36 +23,167 @@ class Agent:
         self.temperature = temperature
         self.specialization_scores = defaultdict(float)
         self.response_history = defaultdict(list)
+        self.performance_history = defaultdict(list)  # Track performance over time
+        self.adaptation_rate = 0.1  # Base adaptation rate
+        self.validator = ResponseValidator()
+        self.consecutive_successes = defaultdict(int)
+        self.success_threshold = 3  # Number of consecutive successes needed for specialization boost
 
-    def generate_response(self, prompt, question_type, max_length=50):
-        """Generate a response with the agent's temperature."""
-        # Add specialization context to the prompt
-        context = f"You are specialized in {question_type} questions. "
-        full_prompt = context + prompt
+    def generate_response(self, prompt, question_type, max_length=500, max_attempts=3):
+        """Generate a response with retries for validation."""
+        # Get few-shot examples
+        few_shot = get_few_shot_prompt(question_type)
         
-        inputs = tokenizer(full_prompt, return_tensors="pt")
-        outputs = model.generate(
-            inputs.input_ids,
-            max_length=max_length,
-            temperature=self.temperature,
-            pad_token_id=tokenizer.eos_token_id
+        # Create a more sophisticated prompt
+        type_specific_instructions = {
+            'arithmetic': "Solve this math problem step by step. Your final answer should be just the number.",
+            'factual': "Answer this factual question directly and concisely. No explanations needed.",
+            'logical': "Analyze this logical problem and give a clear yes/no answer with brief reasoning.",
+            'word_problem': "Solve this word problem step by step. Your final answer should include units if applicable.",
+            'open_ended': "Provide a clear, structured response with specific examples and reasoning."
+        }
+        
+        instruction = type_specific_instructions.get(question_type, "Answer the following question:")
+        
+        # Construct the full prompt with examples and clear formatting
+        full_prompt = (
+            f"{instruction}\n\n"
+            f"{few_shot}\n"
+            f"Question: {prompt}\n"
+            f"Think through this step by step:\n"
+            f"1) First, understand what is being asked\n"
+            f"2) Then, plan your approach\n"
+            f"3) Finally, provide your answer\n\n"
+            f"Answer: "
         )
-        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         
-        # Track response
-        self.response_history[question_type].append(response)
+        # Try generating valid responses
+        for attempt in range(max_attempts):
+            try:
+                inputs = tokenizer(full_prompt, return_tensors="pt", padding=True)
+                outputs = model.generate(
+                    inputs.input_ids,
+                    attention_mask=inputs.attention_mask,
+                    max_new_tokens=200,
+                    do_sample=True,
+                    temperature=max(0.2, self.temperature * (1.0 - self.specialization_scores[question_type])),
+                    pad_token_id=tokenizer.eos_token_id,
+                    num_return_sequences=1,
+                    top_p=0.9,
+                    repetition_penalty=1.2,
+                    no_repeat_ngram_size=3
+                )
+                
+                # Extract only the generated response
+                response = tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
+                
+                # Clean up response
+                response = response.strip()
+                if response.startswith("Answer:"):
+                    response = response[7:].strip()
+                
+                # Additional cleaning based on question type
+                if question_type == 'arithmetic':
+                    # Extract just the number for arithmetic
+                    import re
+                    numbers = re.findall(r'-?\d*\.?\d+', response)
+                    if numbers:
+                        response = numbers[-1]  # Take the last number as the final answer
+                elif question_type == 'factual':
+                    # Take first sentence for factual
+                    response = response.split('.')[0].strip()
+                
+                # Validate response
+                is_valid, cleaned_response = self.validator.validate_response(response, question_type)
+                if is_valid:
+                    self.response_history[question_type].append(cleaned_response)
+                    return cleaned_response
+                
+            except Exception as e:
+                print(f"Error in response generation (attempt {attempt + 1}): {str(e)}")
+                continue
+            
+            # Adjust temperature for next attempt
+            self.temperature *= 0.8
+        
+        # If all attempts fail, return the last response anyway
         return response
 
     def update_specialization(self, question_type: str, score: float):
-        """Update specialization score for a question type."""
-        # Exponential moving average
-        alpha = 0.1
+        """Update specialization score with enhanced reinforcement."""
+        # Track performance
+        self.performance_history[question_type].append(score)
+        
+        # Update consecutive successes
+        if score > 0.8:  # High success threshold
+            self.consecutive_successes[question_type] += 1
+        else:
+            self.consecutive_successes[question_type] = 0
+            
+        # Calculate trend in recent performance
+        recent_scores = self.performance_history[question_type][-5:]
+        if len(recent_scores) >= 2:
+            trend = sum(b - a for a, b in zip(recent_scores[:-1], recent_scores[1:])) / (len(recent_scores) - 1)
+        else:
+            trend = 0
+            
+        # Calculate specialization boost based on consecutive successes
+        specialization_boost = min(0.2, 0.05 * self.consecutive_successes[question_type])
+        
+        # Adjust adaptation rate based on performance trend and specialization
+        if trend > 0:
+            effective_rate = self.adaptation_rate * (1 + trend + specialization_boost)
+        else:
+            effective_rate = self.adaptation_rate * (1 + trend/2)
+            
+        # Update specialization score with momentum and boost
         current = self.specialization_scores[question_type]
-        self.specialization_scores[question_type] = (1 - alpha) * current + alpha * score
+        momentum = 0.9
+        
+        new_score = (
+            momentum * current +
+            (1 - momentum) * (current + effective_rate * (score - current))
+        )
+        
+        # Apply specialization boost if threshold met
+        if self.consecutive_successes[question_type] >= self.success_threshold:
+            new_score += specialization_boost
+            
+        # Update score with bounds
+        self.specialization_scores[question_type] = max(0.0, min(1.0, new_score))
 
     def get_specialization(self, question_type: str) -> float:
-        """Get specialization score for a question type."""
-        return self.specialization_scores[question_type]
+        """Get specialization score with confidence and success bonus."""
+        base_score = self.specialization_scores[question_type]
+        
+        # Calculate confidence based on number of responses
+        n_responses = len(self.performance_history[question_type])
+        confidence = min(1.0, n_responses / 10.0)
+        
+        # Add bonus for consecutive successes
+        success_bonus = min(0.2, 0.05 * self.consecutive_successes[question_type])
+        
+        return min(1.0, base_score * confidence + success_bonus)
+
+    def get_performance_stats(self, question_type: str) -> dict:
+        """Get detailed performance statistics."""
+        scores = self.performance_history[question_type]
+        if not scores:
+            return {
+                "mean": 0.0,
+                "std": 0.0,
+                "trend": 0.0,
+                "n_samples": 0,
+                "consecutive_successes": self.consecutive_successes[question_type]
+            }
+            
+        return {
+            "mean": np.mean(scores),
+            "std": np.std(scores) if len(scores) > 1 else 0.0,
+            "trend": np.polyfit(range(len(scores)), scores, 1)[0] if len(scores) > 1 else 0.0,
+            "n_samples": len(scores),
+            "consecutive_successes": self.consecutive_successes[question_type]
+        }
 
 class CriticModel:
     def __init__(self, id, temperature=0.7):
